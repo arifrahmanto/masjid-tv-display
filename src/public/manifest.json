@@ -1,0 +1,10 @@
+{
+  "name": "Masjid TV Display",
+  "short_name": "Masjid TV",
+  "description": "Mosque prayer times and announcements display",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "theme_color": "#2d5016",
+  "background_color": "#ffffff"
+}

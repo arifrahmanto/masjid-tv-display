@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #000;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Full-screen TV display layout */
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.tv-header { height: 15vh; }
+.tv-slideshow { height: 55vh; }
+.tv-prayer-times { height: 20vh; }
+.tv-footer { height: 10vh; }
+
+/* Responsive text scaling for large screens */
+@media (min-width: 1920px) {
+  body {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  body {
+    font-size: 0.9rem;
+  }
+}
