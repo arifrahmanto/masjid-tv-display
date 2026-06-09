@@ -1,0 +1,79 @@
+/* src/components/Slideshow.css */
+.tv-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
+.tv-slideshow.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #999;
+}
+
+.slideshow-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slideshow-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+  padding: 2rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+.slideshow-title {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.slideshow-indicators {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.indicator {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.indicator.active {
+  background: white;
+}
+
+@media (max-width: 1920px) {
+  .slideshow-title {
+    font-size: 1.5rem;
+  }
+  
+  .indicator {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
