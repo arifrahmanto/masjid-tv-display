@@ -10,14 +10,19 @@ export const authOptions = {
     })
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
       if (user) {
         token.user = user
+      }
+      // Capture GitHub access token
+      if (account) {
+        token.accessToken = account.access_token
       }
       return token
     },
     async session({ session, token }) {
       session.user = token.user
+      session.accessToken = token.accessToken
       return session
     }
   },
