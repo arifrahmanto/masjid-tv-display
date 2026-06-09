@@ -1,0 +1,103 @@
+/* src/components/Header.css */
+.tv-header {
+  background: linear-gradient(135deg, #2d5016 0%, #1a3009 100%);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #ffaa00;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.mosque-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.mosque-location {
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0 0;
+  opacity: 0.9;
+}
+
+.header-center {
+  flex: 1;
+  text-align: center;
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clock .time {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+}
+
+.clock .date {
+  font-size: 1.3rem;
+  margin: 0.5rem 0 0 0;
+  opacity: 0.95;
+}
+
+.header-right {
+  flex: 1;
+  text-align: right;
+}
+
+.hijri-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.hijri-date .label {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.85;
+}
+
+.hijri-date .date {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0.3rem 0 0 0;
+}
+
+@media (max-width: 1920px) {
+  .mosque-name {
+    font-size: 2rem;
+  }
+  
+  .clock .time {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .mosque-name {
+    font-size: 1.4rem;
+  }
+  
+  .clock .time {
+    font-size: 1.5rem;
+  }
+}
