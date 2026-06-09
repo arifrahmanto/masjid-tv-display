@@ -1,12 +1,27 @@
 {
   "name": "masjid-tv-display",
   "version": "1.0.0",
-  "description": "Mosque TV Display with Admin Panel",
-  "private": true,
+  "description": "Complete mosque TV display system with real-time prayers, announcements, and admin panel",
+  "keywords": [
+    "mosque",
+    "prayer-times",
+    "islamic",
+    "display",
+    "admin-panel",
+    "hijri-calendar",
+    "announcements"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
   "scripts": {
     "dev:tv": "cd src && npm run dev",
     "dev:admin": "cd admin && npm run dev",
+    "dev:all": "concurrently \"npm run dev:tv\" \"npm run dev:admin\"",
     "build:tv": "cd src && npm run build",
-    "build:admin": "cd admin && npm run build"
+    "build:admin": "cd admin && npm run build",
+    "start:admin": "cd admin && npm run start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
