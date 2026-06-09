@@ -1,0 +1,12 @@
+{
+  "name": "masjid-tv-display",
+  "version": "1.0.0",
+  "description": "Mosque TV Display with Admin Panel",
+  "private": true,
+  "scripts": {
+    "dev:tv": "cd src && npm run dev",
+    "dev:admin": "cd admin && npm run dev",
+    "build:tv": "cd src && npm run build",
+    "build:admin": "cd admin && npm run build"
+  }
+}
