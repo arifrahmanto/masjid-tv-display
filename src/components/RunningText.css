@@ -1,0 +1,33 @@
+/* src/components/RunningText.css */
+.tv-footer {
+  background: #2d5016;
+  color: white;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-top: 3px solid #ffaa00;
+}
+
+.running-text {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: scroll-left linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 1280px) {
+  .running-text {
+    font-size: 1rem;
+  }
+}
