@@ -20,6 +20,8 @@ A complete web-based mosque information display system built with React (TV Disp
 - **Dashboard**: Central hub for all management tasks
 - **Config Editor**: Manage mosque name, location, colors, and settings
 - **Announcements Manager**: Create, edit, and delete slideshow announcements
+  - **Image Management**: Upload images to GitHub, enable/disable announcements from slideshow
+  - **Image Gallery**: Browse and reuse previously uploaded images
 - **Prayer Times Editor**: Edit prayer times with table or CSV modes
 - **Audio Schedule**: Configure murottal and tarhim playback schedules
 - **GitHub Integration**: All data automatically synced to repository
@@ -71,9 +73,10 @@ A complete web-based mosque information display system built with React (TV Disp
 │   │   └── api/
 │   │       ├── auth/[...nextauth].js   # NextAuth config
 │   │       ├── config.js         # Config API
-│   │       ├── announcements.js  # Announcements API
+│   │       ├── announcements.js  # Announcements API (with active field)
 │   │       ├── prayer-times.js   # Prayer times API
-│   │       └── schedule.js       # Schedule API
+│   │       ├── schedule.js       # Schedule API
+│   │       └── upload.js         # Image upload to GitHub
 │   ├── components/
 │   │   ├── AuthProvider.jsx      # OAuth wrapper + topbar
 │   │   ├── Dashboard.jsx         # Dashboard cards
@@ -111,6 +114,9 @@ A complete web-based mosque information display system built with React (TV Disp
 │   │       └── 2026-06-09-masjid-tv-display-plan.md
 │   └── ARCHITECTURE.md           # (optional) Technical deep-dive
 │
+├── IMPLEMENTATION_IMAGE_MANAGEMENT.md  # Image management feature docs
+├── TESTING_IMAGE_MANAGEMENT.md        # Image management testing guide
+├── FEATURE_SUMMARY.md                 # Feature implementation summary
 ├── package.json                  # Root monorepo scripts
 ├── README.md                     # This file
 └── .gitignore
@@ -181,6 +187,9 @@ A complete web-based mosque information display system built with React (TV Disp
    GITHUB_REPO_NAME=masjid-tv-display
    GITHUB_BRANCH=main
    GITHUB_DATA_PATH=public-data
+   
+   NEXT_PUBLIC_GITHUB_REPO_OWNER=your-github-username
+   NEXT_PUBLIC_GITHUB_REPO_NAME=masjid-tv-display
    ```
 
 4. **Local development**:
@@ -210,25 +219,30 @@ A complete web-based mosque information display system built with React (TV Disp
 }
 ```
 
-**announcements.json** - Slideshow (5-10 seconds each):
+**announcements.json** - Slideshow with image management (5-10 seconds each):
 ```json
 {
   "announcements": [
     {
       "id": 1,
       "title": "Important Notice",
-      "image": "https://via.placeholder.com/1920x1080",
-      "duration": 5
+      "image": "1710123456789-announcement.jpg",
+      "duration": 5,
+      "active": true
     }
   ]
 }
 ```
+*Note: `image` is a filename (uploaded to `public-data/images/`), `active` toggles visibility in slideshow*
+```
 
-**prayer-times.csv** - 9 columns (all prayers):
+**prayer-times.csv** - 9 columns (all prayers, numeric month 1-12):
 ```
 tanggal,bulan,imsak,subuh,terbit,duha,zuhur,asar,magrib,isya
-1,January,04:30,04:35,05:50,06:35,12:15,15:30,18:00,19:30
+1,1,03:52,04:02,05:22,05:51,11:44,15:10,18:00,19:15
+2,1,03:52,04:02,05:21,05:51,11:44,15:11,18:01,19:16
 ```
+*Note: `bulan` uses numeric format (1-12, not text) for 366 days (includes leap year Feb 29)*
 
 **schedule.json** - Murottal/Tarhim times:
 ```json
