@@ -108,26 +108,37 @@ function AnnouncementsContent() {
         {announcements.length === 0 ? (
           <p className={styles.empty}>No announcements yet. Create one to get started!</p>
         ) : (
-          announcements.map(announcement => (
-            <div key={announcement.id} className={styles.item}>
-              <div className={styles.itemContent}>
-                <img src={announcement.image} alt={announcement.title} className={styles.itemImage} onError={(e) => e.target.style.display = 'none'} />
-                <div className={styles.itemInfo}>
-                  <h3>{announcement.title}</h3>
-                  <p className={styles.duration}>Duration: {announcement.duration}s</p>
-                  <p className={styles.url}>{announcement.image}</p>
+          announcements.map(announcement => {
+            const imageUrl = announcement.image.startsWith('http')
+              ? announcement.image
+              : `https://raw.githubusercontent.com/${process.env.NEXT_PUBLIC_GITHUB_REPO_OWNER}/${process.env.NEXT_PUBLIC_GITHUB_REPO_NAME}/main/public-data/images/${announcement.image}`
+            
+            return (
+              <div key={announcement.id} className={styles.item}>
+                <div className={styles.itemContent}>
+                  <img src={imageUrl} alt={announcement.title} className={styles.itemImage} onError={(e) => e.target.style.display = 'none'} />
+                  <div className={styles.itemInfo}>
+                    <div className={styles.titleRow}>
+                      <h3>{announcement.title}</h3>
+                      <span className={`${styles.statusBadge} ${announcement.active ? styles.active : styles.inactive}`}>
+                        {announcement.active ? '✓ Active' : '✗ Inactive'}
+                      </span>
+                    </div>
+                    <p className={styles.duration}>Duration: {announcement.duration}s</p>
+                    <p className={styles.filename}>Image: {announcement.image}</p>
+                  </div>
+                </div>
+                <div className={styles.itemActions}>
+                  <button onClick={() => { setEditingId(announcement.id); setShowForm(true); }} className={styles.editBtn}>
+                    Edit
+                  </button>
+                  <button onClick={() => handleDelete(announcement.id)} className={styles.deleteBtn}>
+                    Delete
+                  </button>
                 </div>
               </div>
-              <div className={styles.itemActions}>
-                <button onClick={() => { setEditingId(announcement.id); setShowForm(true); }} className={styles.editBtn}>
-                  Edit
-                </button>
-                <button onClick={() => handleDelete(announcement.id)} className={styles.deleteBtn}>
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))
+            )
+          })
         )}
       </div>
     </div>

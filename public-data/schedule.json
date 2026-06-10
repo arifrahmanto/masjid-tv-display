@@ -3,12 +3,13 @@
     {
       "day": "thursday",
       "time": "17:00",
-      "audioFile": "https://raw.githubusercontent.com/your-username/masjid-tv-display/main/public-data/audio/murottal.mp3"
+      "audioFile": "https://raw.githubusercontent.com/arifrahmanto/masjid-tv-display/main/public-data/audio/murottal_kamis.mp3"
     },
     {
       "day": "friday",
       "time": "10:30",
-      "audioFile": "https://raw.githubusercontent.com/your-username/masjid-tv-display/main/public-data/audio/murottal.mp3"
+      "audioFile": "https://raw.githubusercontent.com/arifrahmanto/masjid-tv-display/main/public-data/audio/murottal_jumat.mp3"
     }
   ]
 }
+  

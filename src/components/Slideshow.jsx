@@ -4,20 +4,23 @@ import './Slideshow.css'
 export default function Slideshow({ announcements = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  useEffect(() => {
-    if (announcements.length === 0) return
+  // Filter only active announcements
+  const activeAnnouncements = announcements.filter(a => a.active !== false)
 
-    const currentAnnouncement = announcements[currentIndex]
+  useEffect(() => {
+    if (activeAnnouncements.length === 0) return
+
+    const currentAnnouncement = activeAnnouncements[currentIndex]
     const duration = (currentAnnouncement.duration || 5) * 1000
 
     const timer = setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % announcements.length)
+      setCurrentIndex((prev) => (prev + 1) % activeAnnouncements.length)
     }, duration)
 
     return () => clearTimeout(timer)
-  }, [currentIndex, announcements])
+  }, [currentIndex, activeAnnouncements])
 
-  if (announcements.length === 0) {
+  if (activeAnnouncements.length === 0) {
     return (
       <div className="tv-slideshow empty">
         <p>No announcements available</p>
@@ -25,12 +28,17 @@ export default function Slideshow({ announcements = [] }) {
     )
   }
 
-  const current = announcements[currentIndex]
+  const current = activeAnnouncements[currentIndex]
+  
+  // Build image URL from filename
+  const imageUrl = current.image.startsWith('http')
+    ? current.image
+    : `https://raw.githubusercontent.com/${process.env.REACT_APP_GITHUB_REPO_OWNER}/${process.env.REACT_APP_GITHUB_REPO_NAME}/main/public-data/images/${current.image}`
 
   return (
     <div className="tv-slideshow">
       <img
-        src={current.image}
+        src={imageUrl}
         alt={current.title}
         className="slideshow-image"
         onError={(e) => {
@@ -43,7 +51,7 @@ export default function Slideshow({ announcements = [] }) {
       </div>
 
       <div className="slideshow-indicators">
-        {announcements.map((_, idx) => (
+        {activeAnnouncements.map((_, idx) => (
           <button
             key={idx}
             className={`indicator ${idx === currentIndex ? 'active' : ''}`}

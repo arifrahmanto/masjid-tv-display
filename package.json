@@ -11,7 +11,7 @@
     "hijri-calendar",
     "announcements"
   ],
-  "author": "Your Name",
+  "author": "Arif Ismiadi",
   "license": "MIT",
   "scripts": {
     "dev:tv": "cd src && npm run dev",

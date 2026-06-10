@@ -52,16 +52,16 @@ export default async function handler(req, res) {
         announcements = []
       }
 
-      const { id, title, image, duration } = req.body
+      const { id, title, image, duration, active } = req.body
       const newId = id || Math.max(...announcements.map(a => a.id), 0) + 1
 
       if (id) {
         const index = announcements.findIndex(a => a.id === id)
         if (index >= 0) {
-          announcements[index] = { id: newId, title, image, duration }
+          announcements[index] = { id: newId, title, image, duration, active: active !== undefined ? active : true }
         }
       } else {
-        announcements.push({ id: newId, title, image, duration })
+        announcements.push({ id: newId, title, image, duration, active: active !== undefined ? active : true })
       }
 
       const updatedContent = JSON.stringify({ announcements }, null, 2)

@@ -3,20 +3,23 @@
     {
       "id": 1,
       "title": "Pengumuman Penting",
-      "image": "https://via.placeholder.com/1920x1080?text=Pengumuman+1",
-      "duration": 5
+      "image": "announcement-1.jpg",
+      "duration": 5,
+      "active": true
     },
     {
       "id": 2,
       "title": "Acara Khusus Bulan Ramadan",
-      "image": "https://via.placeholder.com/1920x1080?text=Pengumuman+2",
-      "duration": 5
+      "image": "announcement-2.jpg",
+      "duration": 5,
+      "active": true
     },
     {
       "id": 3,
       "title": "Jadwal Kegiatan Masjid",
-      "image": "https://via.placeholder.com/1920x1080?text=Pengumuman+3",
-      "duration": 5
+      "image": "announcement-3.jpg",
+      "duration": 5,
+      "active": true
     }
   ]
 }
